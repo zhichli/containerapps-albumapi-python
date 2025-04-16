@@ -1,0 +1,13 @@
+# Exclude Python cache and virtual environments
+__pycache__/
+*.pyc
+
+# Exclude git
+.git
+
+# Exclude IDE/editor config
+*.vscode
+*.idea
+
+# Exclude documentation files
+*.md
