@@ -1,0 +1,102 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Album API",
+    "description": "API for retrieving albums information",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://albums-fastapi-app.ashywave-a1d1c224.eastus.azurecontainerapps.io",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Root endpoint",
+        "description": "Returns a welcome message and instructions",
+        "operationId": "readRoot",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Access /albums to see the list of albums"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/albums": {
+      "get": {
+        "summary": "Get all albums",
+        "description": "Returns a list of all available albums",
+        "operationId": "getAlbums",
+        "responses": {
+          "200": {
+            "description": "List of albums",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Album"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Album": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "example": "You, Me and an App Id"
+          },
+          "artist": {
+            "type": "string",
+            "example": "Daprize"
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "example": 10.99
+          },
+          "image_url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://aka.ms/albums-daprlogo"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "artist",
+          "price",
+          "image_url"
+        ]
+      }
+    }
+  }
+}
