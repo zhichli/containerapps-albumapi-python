@@ -1,0 +1,11 @@
+services:
+  albumapi:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Optional: Mount source code for development (uncomment if needed)
+    # volumes:
+    #   - ./src:/app
+    restart: unless-stopped
